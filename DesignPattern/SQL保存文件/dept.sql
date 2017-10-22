@@ -1,0 +1,5 @@
+CREATE TABLE dept_csy(
+deptno NUMBER(2,0),
+dname VARCHAR2(14 BYTE),
+loc VARCHAR2(13 BYTE)
+)

@@ -1,0 +1,94 @@
+// =============== Program Description ===============
+// 程式名稱： CH04_02.java                               
+// 程式目的： 堆疊應用-洗牌與發牌的過程 
+//		0~12  梅花
+//		13~25 磚塊
+//		26~38 紅心	
+//		39~51 黑桃
+// ===================================================
+
+import java.io.*;
+public    class CH04_02
+{
+static int top=-1;
+public static void main(String args[]) throws IOException
+
+{  
+	int card[]=new int[52];
+	int stack[]=new int[52];
+	int i,j,k=0,test;
+	char ascVal='H';
+	int style;
+	for (i=0;i<52;i++)
+		card[i]=i;
+	System.out.println("[洗牌中...請稍後!]");
+	while(k<30)
+	{
+		for(i=0;i<51;i++)
+		{
+			for(j=i+1;j<52;j++)
+			{
+				if(((int)(Math.random()*5))==2)
+				{
+					test=card[i];//洗牌
+					card[i]=card[j];
+					card[j]=test;  
+				}
+			}
+				
+		}
+		k++;
+	}
+	i=0;
+	while(i!=52)
+	{
+		push(stack,52,card[i]);		//將52張牌推入堆疊
+		i++;
+	}
+	System.out.println("[逆時針發牌]");
+	System.out.println("[顯示各家牌子]\n 東家\t  北家\t   西家\t    南家");
+	System.out.println("=================================");
+	while (top >=0)
+	{  
+		style = stack[top]/13;		//計算牌子花色
+		switch(style)			//牌子花色圖示對應
+		{
+			case 0:				//梅花
+				ascVal='C';
+				break;
+			case 1:				//方塊
+				ascVal='D';
+				break;
+			case 2:				//紅心
+				ascVal='H';
+				break;
+			case 3:				//黑桃
+				ascVal='S';
+				break;
+		}
+		System.out.print("[ "+ascVal+(stack[top]%13+1)+"]");
+				System.out.print('\t');
+		if(top%4==0)
+				System.out.println();
+		top--;
+	}
+}
+public static void push(int stack[],int MAX,int val)
+  {
+	if(top>=MAX-1)
+		System.out.println("[堆疊已經滿了]");
+	else
+	{
+		top++;
+		stack[top]=val;
+	}
+  }
+public static int pop(int stack[])
+  {
+	if(top<0)
+		System.out.println("[堆疊已經空了]");
+	else
+		top--;
+	return stack[top];
+  }
+}

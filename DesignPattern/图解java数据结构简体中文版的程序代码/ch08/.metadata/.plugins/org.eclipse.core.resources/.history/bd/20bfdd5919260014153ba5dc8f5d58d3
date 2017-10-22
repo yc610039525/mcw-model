@@ -1,0 +1,120 @@
+// =============== Program Description ===============
+// 程式名稱： CH08_09.java                               
+// 程式目的： 直接合併排序法
+//            資料檔名：data1.txt,data2.txt，
+//            合併後檔案：data.txt
+// ===================================================
+import java.io.*;
+public class CH08_09
+{	
+	public static void main (String args[])throws Exception 
+	{
+		String filep="data.txt";
+		String filep1="data1.txt";
+		String filep2="data2.txt";
+		File fp=new File(filep);	//宣告新檔主檔指標 fp
+		File fp1=new File(filep1);	//宣告資料檔1指標 fp1
+		File fp2=new File(filep2);	//宣告資料檔2指標 fp2
+		BufferedReader pfile=new BufferedReader(new FileReader(fp)); 
+		BufferedReader pfile1=new BufferedReader(new FileReader(fp1)); 		
+		BufferedReader pfile2=new BufferedReader(new FileReader(fp2)); 	
+		if(!fp.exists())
+			System.out.print("開啟主檔失敗\n");
+		else if(!fp1.exists())        
+			System.out.print("開啟資料檔 1 失敗\n"); //開啟檔案成功時，指標會傳回FILE檔案
+		else if(!fp2.exists())		                 //指標，開啟失敗則傳回NULL值
+			System.out.print("開啟資料檔 2 失敗\n");
+		else
+		{  
+			System.out.print("資料排序中......\n");
+	        merge(fp,fp1,fp2);
+			System.out.print("資料處理完成!!\n");
+		}
+
+		System.out.print("data1.txt資料內容為：\n");
+		char str;
+		int str1;
+		while (true)
+		{  
+			str1=pfile1.read();
+			str=(char)str1;		
+			if(str1==-1)
+				 break;
+			System.out.print("["+str+"]");	
+		}
+		System.out.print("\n");
+		System.out.print("data2.txt資料內容為：\n");
+		while (true)
+		{  
+			str1=pfile2.read();		
+			str=(char)str1;		
+			if(str1==-1)
+				 break;
+			System.out.print("["+str+"]");	
+		}
+		System.out.print("\n");
+		System.out.print("排序後data.txt資料內容為：\n");
+		while (true)
+		{  
+			str1=pfile.read();		
+			str=(char)str1;		
+			if(str1==-1)
+				 break;
+			System.out.print("["+str+"]");	
+		}
+		System.out.print("\n");
+		pfile.close();		//關閉檔案
+		pfile1.close();
+		pfile2.close();
+	}
+	public static void merge(File p, File p1, File p2)throws Exception 
+	{  
+		char str1,str2;
+		int n1,n2;	//宣告變數n1，n2暫存資料檔data1及data2內的元素值
+		BufferedWriter pfile=new BufferedWriter(new FileWriter(p)); 
+		BufferedReader pfile1=new BufferedReader(new FileReader(p1)); 		
+		BufferedReader pfile2=new BufferedReader(new FileReader(p2)); 	
+		n1=pfile1.read();	
+		n2=pfile2.read();
+		while(n1!=-1 && n2!=-1)		//判斷是否已到檔尾
+		{  
+			if (n1 <= n2)
+			{  
+				str1=(char)n1;
+				pfile.write(str1); //如果n1比較小，則把n1存到fp裡
+				n1=pfile1.read();  //接著讀下一筆 n1 的資料
+			}
+			else
+			{  
+				str2=(char)n2;
+				pfile.write(str2); //如果n2比較小，則把n2存到fp裡
+	            n2=pfile2.read();	//接著讀下一筆 n2的資料
+			}
+		}
+		if(n2!=-1)		
+		{ 
+			while (true)
+			{  
+				if(n2==-1)
+					 break;
+				str2=(char)n2;
+				pfile.write(str2);	
+				n2=pfile2.read();		
+			}
+		}
+		else if (n1!=-1)
+		{ 
+			while (true)
+			{  
+				if(n1==-1)
+					 break;
+				str1=(char)n1;
+				pfile.write(str1);	
+				n1=pfile1.read();		
+			}
+		}	 
+		pfile.close();
+		pfile1.close();
+		pfile2.close();
+	}
+}

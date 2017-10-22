@@ -1,0 +1,133 @@
+CREATE TABLE employee_csy(
+  id NUMBER (4),
+  name VARCHAR2(20),
+  gender CHAR(1),
+  birth DATE,
+  salary NUMBER(6,2),
+  job VARCHAR2(30),
+  deptno NUMBER(2)
+  )
+
+
+查看表结构
+DESC table_name
+
+DESC employee
+
+删除一张表
+DROP TABLE table_name
+
+DROP TABLE XXXXXX
+
+
+DEFAULT
+
+
+表中的字段，无论是什么类型，默认值都是NULL，意思是说，若
+向表中添加数据时，该字段不指定值，默认就是NULL。若需要
+对某一列指定默认值，可以使用DEFAULT关键字
+
+指定gender字段的默认值为'M'：
+CREATE TABLE employee_csy(
+  id NUMBER (4),
+  name VARCHAR2(20),
+  gender CHAR(1) DEFAULT 'M',
+  birth DATE,
+  salary NUMBER(6,2),
+  job VARCHAR2(30),
+  deptno NUMBER(2)
+  )
+
+
+
+在定义表的时候，可以为某个字段添加NOT NULL约束，这样
+再向该字段插入数据时必须给值，而不能忽略
+
+要求name字段不能为空：
+CREATE TABLE employee_csy(
+  id NUMBER (4),
+  name VARCHAR2(20)NOT NUll,
+  gender CHAR(1) DEFAULT 'M',
+  birth DATE,
+  salary NUMBER(6,2),
+  job VARCHAR2(30),
+  deptno NUMBER(2)
+  )
+
+
+修改表名字
+RENAME old_name TO new_name
+
+将employee_csy改为myemp_csy
+RENAME employee_csy TO myemp_csy
+
+
+向表中添加新的字段
+ALTER TABLE table_name ADD(column datatype....)
+
+向表myemp_csy中添加字段hiredate
+ALTER TABLE myemp_csy ADD(hiredate DATE DEFAULT sysdate)
+
+添加的字段只能被追加到当前表的最后一列上。
+
+
+
+
+删除表中现有字段的语法：
+ALTER TABLE table_name DROP(column);
+
+例如：删除myemp_csy表中的hiredate字段
+ALTER TABLE myemp_csy DROP (hiredate);
+
+尽量避免在表中有数据后再删除表中字段，因为删除表中字段时，
+会同时将该表中这个字段对应的数据逐一删除释放空间，所以表中
+数据量大时，这个操作会比较慢。
+
+
+
+修改表中的字段
+可以修改表中字段的类型，长度，默认值。
+语法：
+ALTER TABLE table_name MODIFY
+(column datatype [DEFAULT expr][,column datatype...])
+
+例如：
+将myemp_csy表中的job字段的长度改为40...
+ALTER TABLE myemp_csy
+MODIFY(
+  job VARCHAR2(40) DEFAULT 'CLERK'
+  );
+
+需要注意的是，若表中已经包含数据，那么修改字段时要注意以前
+的数据是否支持新的数据类型。
+修改长度应当增大，若减少也要注意表中现有数据是否超过该长度
+若超过，修改可能不成功。
+
+
+
+
+UPDATE和DELETE不写WHERE则全表的数据都会被更新，务必小心
+
+
+
+
+7369	SMITH	CLERK	7902	1980/12/17	800.00		20
+7499	ALLEN	SALESMAN	7698	1981/2/20	1600.00	300.00	30
+7521	WARD	SALESMAN	7698	1981/2/22	1250.00	500.00	30
+7566	JONES	MANAGER	7839	1981/4/2	2975.00		20
+7654	MARTIN	SALESMAN	7698	1981/9/28	1250.00	1400.00	30
+7698	BLAKE	MANAGER	7839	1981/5/1	2850.00		30
+7782	CLARK	MANAGER	7839	1981/6/9	2450.00		10
+7788	SCOTT	ANALYST	7566	1987/4/19	3000.00		20
+7839	KING	PRESIDENT		1981/11/17	5000.00		10
+7844	TURNER	SALESMAN	7698	1981/9/8	1500.00	0.00	30
+7876	ADAMS	CLERK	7788	1987/5/23	1100.00		20
+7900	JAMES	CLERK	7698	1981/12/3	950.00		30
+7902	FORD	ANALYST	7566	1981/12/3	3000.00		20
+7934	MILLER	CLERK	7782	1982/1/23	1300.00		10
+
+Date 类型可以做减法
+两个日期相减差是相隔的天数
+
+
+
