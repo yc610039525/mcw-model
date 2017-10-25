@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.web;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

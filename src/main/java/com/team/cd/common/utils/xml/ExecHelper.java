@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.xml;
 
 /**
  * @author advance

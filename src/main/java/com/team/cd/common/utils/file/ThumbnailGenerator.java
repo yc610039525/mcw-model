@@ -1,7 +1,7 @@
 /**
  * 生成缩略图类
  */
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.file;
 
 /**
  * @author advance

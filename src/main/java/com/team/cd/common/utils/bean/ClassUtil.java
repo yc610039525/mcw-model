@@ -1,12 +1,13 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.bean;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import org.apache.commons.lang3.ClassUtils;
+import com.team.cd.common.utils.date.DateUtil;
 
 public class ClassUtil {
+	private static Class<?>	String;
 	/**
 	 * 获取到的参数 返回值 是Class
 	 * @param obj
@@ -15,7 +16,6 @@ public class ClassUtil {
 		Class<? extends Object> c = obj.getClass();
 		System.out.println("获取Name:"+c.getName());
 		Method[] ms = c.getMethods();
-		//c.getDeclaredMethods()
 		for(int i = 0; i < ms.length;i++){
 			Class<?> returnType = ms[i].getReturnType();
 			System.out.print(returnType.getName()+" ");
@@ -76,11 +76,30 @@ public class ClassUtil {
 			System.out.println("test......");
 		}
 		public static void main(String[] args) throws Exception {
-			System.out.println(ClassUtils.getPackageName("com.team.cd.common.utils"));
-			Class<?> class1 = ClassUtils.getClass("com.team.cd.common.utils.ClassUtil");
-			Object newInstance = class1.newInstance();
-			((ClassUtil)newInstance).test();
-			System.out.println(ClassUtils.getShortClassName(class1));
-			Constructor<?>[] constructors = class1.getConstructors();
+			Class<?> cls = ClassUtil.getClass("com.team.cd.common.utils.bean.Boo");
+			ClassUtil.getConstructors(cls);
+			Object newInstance = cls.newInstance();
+			Constructor<?> constructor = cls.getConstructor(String.class,String.class);
+			Boo boo = (Boo)constructor.newInstance("ASS","ASS");
+			boo.sayBoo("K");
+//			System.out.println(cls.isSynthetic());
+//			Constructor<?>[] constructors = cls.getConstructors();
+//			System.out.println("getDeclaredConstructors:"+cls.getDeclaredConstructors().length);
+//			System.out.println("getDeclaredMethods:"+cls.getDeclaredMethods().length);
+//			System.out.println("getMethods:"+cls.getMethods().length);
+//			System.out.println("isInterface:"+cls.isInterface());
+		}
+		public static Class<?> getClass(String wholeClassName){
+			Class<?> cls = null;
+			try {
+				cls = Class.forName(wholeClassName);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return cls;	
+		}
+		public static Constructor<?>[] getConstructors(Class<?> cls){
+			Constructor<?>[] constructors = cls.getConstructors();
+			return constructors;			
 		}
 }

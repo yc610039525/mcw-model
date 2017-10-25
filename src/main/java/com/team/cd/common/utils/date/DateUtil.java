@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.date;
 
 /**
  * <p>Title: 时间和日期的工具类</p>
@@ -15,7 +15,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class DateUtil {
+import com.team.cd.common.utils.string.CTool;
+
+public class DateUtil{
 	//~ Static fields/initializers =============================================
 
 	private static String datePattern = "MM/dd/yyyy";
@@ -458,5 +460,13 @@ public class DateUtil {
 	    DateFormat df = new SimpleDateFormat(format_string);
 	    return df.format(cld.getTime());
 	}
+	  private static class InnerClass {
 
+	        public InnerClass(){}
+
+	        private int x;
+
+	        private  void y() {
+	        };
+	    }
 }

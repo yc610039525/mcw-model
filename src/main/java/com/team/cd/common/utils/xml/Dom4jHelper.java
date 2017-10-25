@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.xml;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

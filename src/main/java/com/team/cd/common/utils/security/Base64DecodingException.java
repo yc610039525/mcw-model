@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.security;
 
 /*
  * Base64 decoding exception.

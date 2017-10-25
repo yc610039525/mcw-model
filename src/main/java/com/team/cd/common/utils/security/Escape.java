@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.security;
 
 public class Escape {
 	private final static String[] hex = { "00", "01", "02", "03", "04", "05",
@@ -51,13 +51,6 @@ public class Escape {
 			0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
 			0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F };
 
-	/** */
-	/**   
-	 * 编码 
-	 *    
-	 * @param s   
-	 * @return   
-	 */
 	public static String escape(String s) {
 		StringBuffer sbuf = new StringBuffer();
 		int len = s.length();
@@ -86,13 +79,7 @@ public class Escape {
 		return sbuf.toString();
 	}
 
-	/** */
-	/**   
-	 * 解码 说明：本方法保证 不论参数s是否经过escape()编码，均能得到正确的“解码”结果 
-	 *    
-	 * @param s   
-	 * @return   
-	 */
+	
 	public static String unescape(String s) {
 		StringBuffer sbuf = new StringBuffer();
 		int i = 0;
@@ -132,7 +119,7 @@ public class Escape {
 	}
 
 	public static void main(String[] args) {
-		String stest = "一声笑傲江湖之曲1234 abcd[]()<+>,.~\"";
+		String stest = ":kkkkkkkkk";
 		System.out.println(stest);
 		System.out.println(escape(stest));
 		System.out.println(unescape(escape(stest)));

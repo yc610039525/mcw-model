@@ -1,7 +1,7 @@
 /**
  * 上传文件类
  */
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.file;
 
 /**
  * @author advance

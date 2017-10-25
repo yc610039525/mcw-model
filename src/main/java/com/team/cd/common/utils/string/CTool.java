@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.string;
 
 /**
  * 此类中收集Java编程中WEB开发常用到的一些工具。

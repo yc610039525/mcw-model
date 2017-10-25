@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.string;
 
 
 import java.util.HashMap;
@@ -1570,5 +1570,13 @@ public class StringHelper {
 	 */
 	public static boolean endsWithAnyIgnoreCase(String s, String[] terms){
 		return getEndsWithAnyIgnoreCasePattern(terms).matcher(s).matches();
+	}
+	public static final String address="中国香港{address}特别行政区";
+	public static void main(String[] args) {
+		String newAddress = address;
+		System.out.println(newAddress==address);
+		System.out.println(address.replace("{V}", "|"));
+		System.out.println(address.replace("\\{\\w\\}", "|"));
+		System.out.println(address.replaceAll("\\{\\w*\\}", "|"));
 	}
 }

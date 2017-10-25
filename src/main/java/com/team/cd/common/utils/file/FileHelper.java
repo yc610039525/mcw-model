@@ -1,4 +1,4 @@
-package com.team.cd.common.utils;
+package com.team.cd.common.utils.file;
 
 import java.io.*;
 import java.text.MessageFormat;
