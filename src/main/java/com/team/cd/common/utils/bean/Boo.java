@@ -26,10 +26,12 @@ public class Boo extends Aoo implements ICoo{
 		this.address = address;
 	}
 	@Override
-	public void coo() {
-		
+	@Deprecated
+	public void sayGoodBye() {
+		System.out.println("Boo:"+","+this.address);
 	}
-	public void sayBoo(String K){
+	private String sayHi(String K){
 		System.out.println("Boo:"+K+","+this.address);
+		return K;
 	}
 }
