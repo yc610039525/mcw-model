@@ -76,7 +76,14 @@ public class ClassUtil {
 			System.out.println("test......");
 		}
 		public static void main(String[] args) throws Exception {
-			Class<?> cls = ClassUtil.getClass("com.team.cd.common.utils.bean.Boo");
+			Class<Integer> intclas = Integer.class;
+			Class<?> forName = Class.forName("com.team.cd.common.utils.bean.Boo");
+			@SuppressWarnings("unchecked")
+			Class<Boo> cls = (Class<Boo>) ClassUtil.getClass("com.team.cd.common.utils.bean.Boo");	
+			
+			Object object = ClassUtil.getObject(ClassUtil.getClass("com.team.cd.common.utils.bean.Boo"));
+			
+			Boo newInstance2 = cls.newInstance();
 			ClassUtil.getConstructors(cls);
 			Object newInstance = cls.newInstance();
 			Constructor<?> constructor = cls.getConstructor(String.class,String.class);
@@ -102,4 +109,17 @@ public class ClassUtil {
 			Constructor<?>[] constructors = cls.getConstructors();
 			return constructors;			
 		}
+		
+		public static <T> T getObject(Class<T> cls){
+			T newInstance = null;
+			try {
+				newInstance = cls.newInstance();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+			return newInstance;
+		}
+ 		
 }
