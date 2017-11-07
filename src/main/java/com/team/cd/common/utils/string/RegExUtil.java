@@ -198,4 +198,73 @@ public class RegExUtil {
             return returnValue;
         }
   }
+    public static void main(String[] args) {
+		// 按指定模式在字符串查找
+		String line = "ThisA 3000 **#@ ThisB 3000 %%@";
+		String pattern = "((\\D*)+?(\\d+)+?(\\W*)+?)+?";//非贪婪匹配
+		/*	
+	    Found value 0-: ThisA 3000 **#@ //非贪婪匹配
+		Found value 1-: ThisA 3000 **#@ 
+		Found value 2-: ThisA 
+		Found value 3-: 3000
+		Found value 4-:  **#@ 
+		*/
+		
+		
+//		String pattern = "((\\D*)+?(\\d+)+?(\\W*)+?)+";//贪婪匹配
+		
+		/*
+		Found value 0-: ThisA 3000 **#@ ThisB 3000 %%@ //贪婪匹配
+		Found value 1-: ThisB 3000 %%@
+		Found value 2-: ThisB 
+		Found value 3-: 3000
+		Found value 4-:  %%@
+		*/
+		
+		// 创建 Pattern 对象
+		Pattern r = Pattern.compile(pattern);
+		
+		// 现在创建 matcher 对象
+		Matcher m = r.matcher(line);
+		System.out.println("groupCount:"+m.groupCount());
+		if (m.find()) {//下标开始搜索 m.find(2)
+			System.out.println("Found value: 0-" + m.group(0));
+			System.out.println("Found value: 1-" + m.group(1));
+			System.out.println("Found value: 2-" + m.group(2));
+			System.out.println("Found value: 3-" + m.group(3));
+			System.out.println("Found value: 4-" + m.group(4));
+			System.out.println("start:"+m.start());
+			System.out.println("end:"+m.end());
+			System.out.println("start-2:"+m.start(2));
+			System.out.println("end-2:"+m.end(2));
+		}
+		m.reset();
+		while(m.find()){
+			System.out.println("match value: " + m.group());
+			
+			/*
+			 * 非贪婪匹配
+			 * match value: ThisA 3000 **#@ 
+			 * match value: ThisB 3000 %%@
+			 */
+			
+			/*
+			 * 贪婪匹配
+			 * match value: ThisA 3000 **#@ ThisB 3000 %%@
+			 */
+			
+		}
+		String regxp0 = "[\u4e00-\u9fa5]";
+		Pattern p = r.compile(regxp0);
+		Matcher matcher = p.matcher("1212kkKkkkk开口12");
+//		while(matcher.find()){
+//			System.out.println("matcher V:"+matcher.group());
+//		}
+		String regxp1 = "[0-9]+[a-zA-Z]";
+		p =  r.compile(regxp1);
+		matcher = p.matcher("1212kkKkkkk开口121212kkKkkkk开口12");
+		while(matcher.find()){
+			System.out.println("matcher V:"+matcher.group());
+		}
+	}
 }

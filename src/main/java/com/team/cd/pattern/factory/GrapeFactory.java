@@ -1,5 +1,9 @@
 package com.team.cd.pattern.factory;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public class GrapeFactory implements IFruitFactory {
 
 	@Override

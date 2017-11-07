@@ -10,6 +10,7 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -161,6 +162,25 @@ public class Dom4jHelper {
 		Document document = DocumentHelper.parseText(text);
         return document;
 	}
+	/**
+	 * 
+	 * @param xml
+	 * @return
+	 * @throws DocumentException
+	 */
+	public Document parseXml2Doc(String xml) throws DocumentException {
+		if(!xml.startsWith("<?xml")){//ws中&字符 用于xml解析必须 &amp;转义
+			xml="<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"+xml;
+			xml = xml.replaceAll("&","&amp;");
+    	}
+		return DocumentHelper.parseText(xml);
+	}
+	/*public List<Map<String, Object>> parseXml2List(String xml, String xPath, IFaceMapping mapping) throws DocumentException {
+		Document doc = this.parseXml2Doc(xml);
+		List<Element> list = doc.selectNodes(xPath);
+		return null;
+	}*/
+	
 	/**
 	 * @param args
 	 */
