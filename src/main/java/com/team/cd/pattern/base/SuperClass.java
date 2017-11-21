@@ -33,7 +33,15 @@ public class SuperClass {
 			System.out.println("SuperInnerClass-sayHelloInner:"+s);
 		}
 	}
-	public SuperInnerClass getSuperInnerClass(){
+	public /*final*/ String f="1212";
+	public SuperInnerClass getSuperInnerClass(final String k){
+		NoneNamedI si = new NoneNamedI(){
+			@Override
+			public void sayGoodBye(String s) {
+				System.out.println(s+","+f+""+k);
+			}
+		};
+		si.sayGoodBye(f);
 		String b =SuperClass.SuperStaticInnerClass.CUID;
 		String s = SuperClass.SuperInnerClass.CUID;
 		return new SuperInnerClass();
@@ -42,5 +50,10 @@ public class SuperClass {
 		String b =SuperClass.SuperStaticInnerClass.CUID;
 		String s = SuperClass.SuperInnerClass.CUID;
 		return new SuperStaticInnerClass();
+	}
+	public static void main(String[] args) {
+		new SuperClass().getSuperInnerClass("123");
+		SuperClass s = new SuperClass();
+		System.out.println(SuperClass.SuperStaticInnerClass.CUID);
 	}
 }

@@ -1,5 +1,7 @@
 package com.team.cd.pattern.singleton;
 
+import java.io.IOException;
+
 /**
  * <p>这种方式跟饿汉式方式采用的机制类似，但又有不同。
  * 两者都是采用了类装载的机制来保证初始化实例时只有一个线程。
@@ -21,5 +23,9 @@ public class InnerClassSingleton {
 
 	public static InnerClassSingleton getInstance() {
 		return SingletonInstance.INSTANCE;
+	}
+	public static void main(String[] args) throws IOException {
+		HungrySingleton.printAttrName();
+		
 	}
 }
