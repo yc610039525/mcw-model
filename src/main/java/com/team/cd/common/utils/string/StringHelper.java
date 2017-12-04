@@ -5,42 +5,10 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class StringHelper {
-
-	/**
-	 * Pad the beginning of the given String with spaces until
-	 * the String is of the given length.
-	 * <p>
-	 * If a String is longer than the desired length,
-	 * it will not be truncated, however no padding
-	 * will be added.
-	 *
-	 * @param s String to be padded.
-	 * @param length desired length of result.
-	 * @return padded String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String prepad(String s, int length){
 		return prepad(s, length, ' ');
 	}
 
-	/**
-	 * Pre-pend the given character to the String until
-	 * the result is the desired length.
-	 * <p>
-	 * If a String is longer than the desired length,
-	 * it will not be truncated, however no padding
-	 * will be added.
-	 *
-	 * @param s String to be padded.
-	 * @param length desired length of result.
-	 * @param c padding character.
-	 * @return padded String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String prepad(String s, int length, char c){
 		int needed = length - s.length();
 		if (needed <= 0){
@@ -54,41 +22,10 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Pad the end of the given String with spaces until
-	 * the String is of the given length.
-	 * <p>
-	 * If a String is longer than the desired length,
-	 * it will not be truncated, however no padding
-	 * will be added.
-	 *
-	 * @param s String to be padded.
-	 * @param length desired length of result.
-	 * @return padded String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String postpad(String s, int length){
 		return postpad(s, length, ' ');
 	}
 
-	/**
-	 * Append the given character to the String until
-	 * the result is  the desired length.
-	 * <p>
-	 * If a String is longer than the desired length,
-	 * it will not be truncated, however no padding
-	 * will be added.
-	 *
-	 * @param s String to be padded.
-	 * @param length desired length of result.
-	 * @param c padding character.
-	 * @return padded String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String postpad(String s, int length, char c){
 		int needed = length - s.length();
 		if (needed <= 0){
@@ -102,51 +39,10 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Pad the beginning and end of the given String with spaces until
-	 * the String is of the given length.  The result is that the original
-	 * String is centered in the middle of the new string.
-	 * <p>
-	 * If the number of characters to pad is even, then the padding
-	 * will be split evenly between the beginning and end, otherwise,
-	 * the extra character will be added to the end.
-	 * <p>
-	 * If a String is longer than the desired length,
-	 * it will not be truncated, however no padding
-	 * will be added.
-	 *
-	 * @param s String to be padded.
-	 * @param length desired length of result.
-	 * @return padded String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String midpad(String s, int length){
 		return midpad(s, length, ' ');
 	}
 
-	/**
-	 * Pad the beginning and end of the given String with the given character
-	 * until the result is  the desired length.  The result is that the original
-	 * String is centered in the middle of the new string.
-	 * <p>
-	 * If the number of characters to pad is even, then the padding
-	 * will be split evenly between the beginning and end, otherwise,
-	 * the extra character will be added to the end.
-	 * <p>
-	 * If a String is longer than the desired length,
-	 * it will not be truncated, however no padding
-	 * will be added.
-	 *
-	 * @param s String to be padded.
-	 * @param length desired length of result.
-	 * @param c padding character.
-	 * @return padded String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String midpad(String s, int length, char c){
 		int needed = length - s.length();
 		if (needed <= 0){
@@ -165,40 +61,6 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Split the given String into tokens.
-	 * <P>
-	 * This method is meant to be similar to the split
-	 * function in other programming languages but it does
-	 * not use regular expressions.  Rather the String is
-	 * split on a single String literal.
-	 * <P>
-	 * Unlike java.util.StringTokenizer which accepts
-	 * multiple character tokens as delimiters, the delimiter
-	 * here is a single String literal.
-	 * <P>
-	 * Each null token is returned as an empty String.
-	 * Delimiters are never returned as tokens.
-	 * <P>
-	 * If there is no delimiter because it is either empty or
-	 * null, the only element in the result is the original String.
-	 * <P>
-	 * StringHelper.split("1-2-3", "-");<br>
-	 * result: {"1","2","3"}<br>
-	 * StringHelper.split("-1--2-", "-");<br>
-	 * result: {"","1","","2",""}<br>
-	 * StringHelper.split("123", "");<br>
-	 * result: {"123"}<br>
-	 * StringHelper.split("1-2---3----4", "--");<br>
-	 * result: {"1-2","-3","","4"}<br>
-	 *
-	 * @param s String to be split.
-	 * @param delimiter String literal on which to split.
-	 * @return an array of tokens.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String[] split(String s, String delimiter){
 		int delimiterLength;
 		// the next statement has the side effect of throwing a null pointer
@@ -232,12 +94,7 @@ public class StringHelper {
 			start = end + delimiterLength;
 		}
 		count++;
-
-		// allocate an array to return the tokens,
-		// we now know how big it should be
 		String[] result = new String[count];
-
-		// Scan s again, but this time pick out the tokens
 		count = 0;
 		start = 0;
 		while((end = s.indexOf(delimiter, start)) != -1){
@@ -251,41 +108,6 @@ public class StringHelper {
 		return (result);
 	}
 
-	/**
-	 * Split the given String into tokens.  Delimiters will
-	 * be returned as tokens.
-	 * <P>
-	 * This method is meant to be similar to the split
-	 * function in other programming languages but it does
-	 * not use regular expressions.  Rather the String is
-	 * split on a single String literal.
-	 * <P>
-	 * Unlike java.util.StringTokenizer which accepts
-	 * multiple character tokens as delimiters, the delimiter
-	 * here is a single String literal.
-	 * <P>
-	 * Each null token is returned as an empty String.
-	 * Delimiters are never returned as tokens.
-	 * <P>
-	 * If there is no delimiter because it is either empty or
-	 * null, the only element in the result is the original String.
-	 * <P>
-	 * StringHelper.split("1-2-3", "-");<br>
-	 * result: {"1","-","2","-","3"}<br>
-	 * StringHelper.split("-1--2-", "-");<br>
-	 * result: {"","-","1","-","","-","2","-",""}<br>
-	 * StringHelper.split("123", "");<br>
-	 * result: {"123"}<br>
-	 * StringHelper.split("1-2--3---4----5", "--");<br>
-	 * result: {"1-2","--","3","--","-4","--","","--","5"}<br>
-	 *
-	 * @param s String to be split.
-	 * @param delimiter String literal on which to split.
-	 * @return an array of tokens.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.05.00
-	 */
 	public static String[] splitIncludeDelimiters(String s, String delimiter){
 		int delimiterLength;
 		// the next statement has the side effect of throwing a null pointer
@@ -340,39 +162,10 @@ public class StringHelper {
 		return (result);
 	}
 
-	/**
-	 * Join all the elements of a string array into a single
-	 * String.
-	 * <p>
-	 * If the given array empty an empty string
-	 * will be returned.  Null elements of the array are allowed
-	 * and will be treated like empty Strings.
-	 *
-	 * @param array Array to be joined into a string.
-	 * @return Concatenation of all the elements of the given array.
-	 * @throws NullPointerException if array is null.
-	 *
-	 * @since ostermillerutils 1.05.00
-	 */
 	public static String join(String[] array){
 		return join(array, "");
 	}
 
-	/**
-	 * Join all the elements of a string array into a single
-	 * String.
-	 * <p>
-	 * If the given array empty an empty string
-	 * will be returned.  Null elements of the array are allowed
-	 * and will be treated like empty Strings.
-	 *
-	 * @param array Array to be joined into a string.
-	 * @param delimiter String to place between array elements.
-	 * @return Concatenation of all the elements of the given array with the the delimiter in between.
-	 * @throws NullPointerException if array or delimiter is null.
-	 *
-	 * @since ostermillerutils 1.05.00
-	 */
 	public static String join(String[] array, String delimiter){
 		// Cache the length of the delimiter
 		// has the side effect of throwing a NullPointerException if
@@ -409,28 +202,6 @@ public class StringHelper {
 		return result.toString();
 	}
 
-	/**
-	 * Replace occurrences of a substring.
-	 *
-	 * StringHelper.replace("1-2-3", "-", "|");<br>
-	 * result: "1|2|3"<br>
-	 * StringHelper.replace("-1--2-", "-", "|");<br>
-	 * result: "|1||2|"<br>
-	 * StringHelper.replace("123", "", "|");<br>
-	 * result: "123"<br>
-	 * StringHelper.replace("1-2---3----4", "--", "|");<br>
-	 * result: "1-2|-3||4"<br>
-	 * StringHelper.replace("1-2---3----4", "--", "---");<br>
-	 * result: "1-2----3------4"<br>
-	 *
-	 * @param s String to be modified.
-	 * @param find String to find.
-	 * @param replace String to replace.
-	 * @return a string with all the occurrences of the string to find replaced.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String replace(String s, String find, String replace){
 		int findLength;
 		// the next statement has the side effect of throwing a null pointer
@@ -503,44 +274,6 @@ public class StringHelper {
 		return (sb.toString());
 	}
 
-	/**
-	 * Replaces characters that may be confused by a HTML
-	 * parser with their equivalent character entity references.
-	 * <p>
-	 * Any data that will appear as text on a web page should
-	 * be be escaped.  This is especially important for data
-	 * that comes from untrusted sources such as Internet users.
-	 * A common mistake in CGI programming is to ask a user for
-	 * data and then put that data on a web page.  For example:<pre>
-	 * Server: What is your name?
-	 * User: &lt;b&gt;Joe&lt;b&gt;
-	 * Server: Hello <b>Joe</b>, Welcome</pre>
-	 * If the name is put on the page without checking that it doesn't
-	 * contain HTML code or without sanitizing that HTML code, the user
-	 * could reformat the page, insert scripts, and control the the
-	 * content on your web server.
-	 * <p>
-	 * This method will replace HTML characters such as &gt; with their
-	 * HTML entity reference (&amp;gt;) so that the html parser will
-	 * be sure to interpret them as plain text rather than HTML or script.
-	 * <p>
-	 * This method should be used for both data to be displayed in text
-	 * in the html document, and data put in form elements. For example:<br>
-	 * <code>&lt;html&gt;&lt;body&gt;<i>This in not a &amp;lt;tag&amp;gt;
-	 * in HTML</i>&lt;/body&gt;&lt;/html&gt;</code><br>
-	 * and<br>
-	 * <code>&lt;form&gt;&lt;input type="hidden" name="date" value="<i>This data could
-	 * be &amp;quot;malicious&amp;quot;</i>"&gt;&lt;/form&gt;</code><br>
-	 * In the second example, the form data would be properly be resubmitted
-	 * to your cgi script in the URLEncoded format:<br>
-	 * <code><i>This data could be %22malicious%22</i></code>
-	 *
-	 * @param s String to be escaped
-	 * @return escaped String
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String escapeHTML(String s){
 		int length = s.length();
 		int newLength = length;
@@ -628,32 +361,6 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Replaces characters that may be confused by an SQL
-	 * parser with their equivalent escape characters.
-	 * <p>
-	 * Any data that will be put in an SQL query should
-	 * be be escaped.  This is especially important for data
-	 * that comes from untrusted sources such as Internet users.
-	 * <p>
-	 * For example if you had the following SQL query:<br>
-	 * <code>"SELECT * FROM addresses WHERE name='" + name + "' AND private='N'"</code><br>
-	 * Without this function a user could give <code>" OR 1=1 OR ''='"</code>
-	 * as their name causing the query to be:<br>
-	 * <code>"SELECT * FROM addresses WHERE name='' OR 1=1 OR ''='' AND private='N'"</code><br>
-	 * which will give all addresses, including private ones.<br>
-	 * Correct usage would be:<br>
-	 * <code>"SELECT * FROM addresses WHERE name='" + StringHelper.escapeSQL(name) + "' AND private='N'"</code><br>
-	 * <p>
-	 * Another way to avoid this problem is to use a PreparedStatement
-	 * with appropriate placeholders.
-	 *
-	 * @param s String to be escaped
-	 * @return escaped String
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String escapeSQL(String s){
 		int length = s.length();
 		int newLength = length;
@@ -699,18 +406,6 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Replaces characters that are not allowed in a Java style
-	 * string literal with their escape characters.  Specifically
-	 * quote ("), single quote ('), new line (\n), carriage return (\r),
-	 * and backslash (\), and tab (\t) are escaped.
-	 *
-	 * @param s String to be escaped
-	 * @return escaped String
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String escapeJavaLiteral(String s){
 		int length = s.length();
 		int newLength = length;
@@ -764,17 +459,6 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Trim any of the characters contained in the second
-	 * string from the beginning and end of the first.
-	 *
-	 * @param s String to be trimmed.
-	 * @param c list of characters to trim from s.
-	 * @return trimmed String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.00.00
-	 */
 	public static String trim(String s, String c){
 		int length = s.length();
 		if (c == null){
@@ -1071,16 +755,6 @@ public class StringHelper {
 		htmlEntities.put("euro", new Integer(8364));
 	}
 
-	/**
-	 * Turn any HTML escape entities in the string into
-	 * characters and return the resulting string.
-	 *
-	 * @param s String to be unescaped.
-	 * @return unescaped String.
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since 1.00.00
-	 */
 	public static String unescapeHTML(String s){
 		StringBuffer result = new StringBuffer(s.length());
 		int ampInd = s.indexOf("&");
@@ -1115,16 +789,6 @@ public class StringHelper {
 		return result.toString();
 	}
 
-	/**
-	 * Escapes characters that have special meaning to
-	 * regular expressions
-	 *
-	 * @param s String to be escaped
-	 * @return escaped String
-	 * @throws NullPointerException if s is null.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static String escapeRegularExpressionLiteral(String s){
 		// According to the documentation in the Pattern class:
 		//
@@ -1167,15 +831,6 @@ public class StringHelper {
 		return sb.toString();
 	}
 
-	/**
-	 * Build a regular expression that is each of the terms or'd together.
-	 *
-	 * @param terms a list of search terms.
-	 * @param sb place to build the regular expression.
-	 * @throws IllegalArgumentException if the length of terms is zero.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	private static void buildFindAnyPattern(String[] terms, StringBuffer sb){
 		if (terms.length == 0) throw new IllegalArgumentException("There must be at least one term to find.");
 		sb.append("(?:");
@@ -1188,21 +843,6 @@ public class StringHelper {
 		sb.append(")");
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * contains any of the given terms.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getContainsAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it contains any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static Pattern getContainsAnyPattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?s).*");
@@ -1211,21 +851,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * equals any of the given terms.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getEqualsAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it equals any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	 public static Pattern getEqualsAnyPattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?s)\\A");
@@ -1234,21 +859,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * starts with any of the given terms.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getStartsWithAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it starts with any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	 public static Pattern getStartsWithAnyPattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?s)\\A");
@@ -1257,21 +867,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * ends with any of the given terms.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getEndsWithAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it ends with any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static Pattern getEndsWithAnyPattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?s).*");
@@ -1280,23 +875,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * contains any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getContainsAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it contains any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static Pattern getContainsAnyIgnoreCasePattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?i)(?u)(?s).*");
@@ -1305,23 +883,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * equals any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getEqualsAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it equals any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	 public static Pattern getEqualsAnyIgnoreCasePattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?i)(?u)(?s)\\A");
@@ -1330,23 +891,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * starts with any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getStartsWithAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it starts with any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	 public static Pattern getStartsWithAnyIgnoreCasePattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?i)(?u)(?s)\\A");
@@ -1355,23 +899,6 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Compile a pattern that can will match a string if the string
-	 * ends with any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * Usage:<br>
-	 * <code>boolean b = getEndsWithAnyPattern(terms).matcher(s).matches();</code>
-	 * <p>
-	 * If multiple strings are matched against the same set of terms,
-	 * it is more efficient to reuse the pattern returned by this function.
-	 *
-	 * @param terms Array of search strings.
-	 * @return Compiled pattern that can be used to match a string to see if it ends with any of the terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static Pattern getEndsWithAnyIgnoreCasePattern(String[] terms){
 		StringBuffer sb = new StringBuffer();
 		sb.append("(?i)(?u)(?s).*");
@@ -1380,203 +907,49 @@ public class StringHelper {
 		return Pattern.compile(sb.toString());
 	}
 
-	/**
-	 * Tests to see if the given string contains any of the given terms.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getContainsAnyPattern(String[])
-	 *
-	 * @param s String that may contain any of the given terms.
-	 * @param terms list of substrings that may be contained in the given string.
-	 * @return true iff one of the terms is a substring of the given string.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean containsAny(String s, String[] terms){
 		return getContainsAnyPattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string equals any of the given terms.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getEqualsAnyPattern(String[])
-	 *
-	 * @param s String that may equal any of the given terms.
-	 * @param terms list of strings that may equal the given string.
-	 * @return true iff one of the terms is equal to the given string.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean equalsAny(String s, String[] terms){
 		return getEqualsAnyPattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string starts with any of the given terms.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getStartsWithAnyPattern(String[])
-	 *
-	 * @param s String that may start with any of the given terms.
-	 * @param terms list of strings that may start with the given string.
-	 * @return true iff the given string starts with one of the given terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean startsWithAny(String s, String[] terms){
 		return getStartsWithAnyPattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string ends with any of the given terms.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getEndsWithAnyPattern(String[])
-	 *
-	 * @param s String that may end with any of the given terms.
-	 * @param terms list of strings that may end with the given string.
-	 * @return true iff the given string ends with one of the given terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean endsWithAny(String s, String[] terms){
 		return getEndsWithAnyPattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string contains any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getContainsAnyIgnoreCasePattern(String[])
-	 *
-	 * @param s String that may contain any of the given terms.
-	 * @param terms list of substrings that may be contained in the given string.
-	 * @return true iff one of the terms is a substring of the given string.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean containsAnyIgnoreCase(String s, String[] terms){
 		return getContainsAnyIgnoreCasePattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string equals any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getEqualsAnyIgnoreCasePattern(String[])
-	 *
-	 * @param s String that may equal any of the given terms.
-	 * @param terms list of strings that may equal the given string.
-	 * @return true iff one of the terms is equal to the given string.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean equalsAnyIgnoreCase(String s, String[] terms){
 		return getEqualsAnyIgnoreCasePattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string starts with any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getStartsWithAnyIgnoreCasePattern(String[])
-	 *
-	 * @param s String that may start with any of the given terms.
-	 * @param terms list of strings that may start with the given string.
-	 * @return true iff the given string starts with one of the given terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean startsWithAnyIgnoreCase(String s, String[] terms){
 		return getStartsWithAnyIgnoreCasePattern(terms).matcher(s).matches();
 	}
 
-	/**
-	 * Tests to see if the given string ends with any of the given terms.
-	 * <p>
-	 * Case is ignored when matching using Unicode case rules.
-	 * <p>
-	 * This implementation is more efficient than the brute force approach
-	 * of testing the string against each of the terms.  It instead compiles
-	 * a single regular expression that can test all the terms at once, and
-	 * uses that expression against the string.
-	 * <p>
-	 * This is a convenience method.  If multiple strings are tested against
-	 * the same set of terms, it is more efficient not to compile the regular
-	 * expression multiple times.
-	 * @see #getEndsWithAnyIgnoreCasePattern(String[])
-	 *
-	 * @param s String that may end with any of the given terms.
-	 * @param terms list of strings that may end with the given string.
-	 * @return true iff the given string ends with one of the given terms.
-	 *
-	 * @since ostermillerutils 1.02.25
-	 */
 	public static boolean endsWithAnyIgnoreCase(String s, String[] terms){
 		return getEndsWithAnyIgnoreCasePattern(terms).matcher(s).matches();
 	}
 	public static final String address="中国香港{address}特别行政区";
 	public static void main(String[] args) {
-		String newAddress = address;
-		System.out.println(newAddress==address);
-		System.out.println(address.replace("{V}", "|"));
-		System.out.println(address.replace("\\{\\w\\}", "|"));
-		System.out.println(address.replaceAll("\\{\\w*\\}", "|"));
+//		String newAddress = address;
+//		System.out.println(newAddress==address);
+//		System.out.println(address.replace("{V}", "|"));
+//		System.out.println(address.replace("\\{\\w\\}", "|"));
+//		System.out.println(address.replaceAll("\\{\\w*\\}", "|"));
+//		System.out.println(StringHelper.join(new String[]{"1","2","3"}, ","));
+		String s = StringHelper.join(new String[]{"1","2","3"}, "','");
+		StringBuffer sb = new StringBuffer(s);
+		String r = sb.insert(0, "('").insert(sb.length(), "')").toString();
+		System.out.println(r);
 	}
+	
 }
