@@ -18,7 +18,7 @@ package com.team.cd.common.utils.security;
  * See COPYING.TXT for details.
  */
 
-import java.io.*;
+import java.io.IOException;
 
 /**
  * Exception that is thrown when an unexpected character is encountered

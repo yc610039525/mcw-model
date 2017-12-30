@@ -8,8 +8,11 @@ package com.team.cd.common.utils.date;
  * @author <a href="mailto:royiwu@hotmail.com">advance.wu</a>
  * @version 1.0
  */
-import java.util.*;
-import java.text.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class DateHandler {
 

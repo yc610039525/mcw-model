@@ -1,7 +1,9 @@
 package com.team.cd.common.utils.file;
 
-import java.util.*;
-import java.io.*;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Properties;
 
 public class PropsUtil {
     /**

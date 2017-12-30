@@ -1,7 +1,9 @@
 package com.team.cd.common.utils.string;
 
-import java.util.*;
-import java.util.regex.*;
+import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * 这是个正则表达式应用类，用来匹配和替换字串用的

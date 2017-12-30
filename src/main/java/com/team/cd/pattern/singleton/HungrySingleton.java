@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-
 /**
  * 饿汉式
  * 常见一个对象需要消耗过多的资源 IO 数据库访问

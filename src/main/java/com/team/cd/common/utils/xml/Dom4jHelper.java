@@ -10,7 +10,6 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;

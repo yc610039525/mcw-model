@@ -1,16 +1,5 @@
 package com.team.cd.common.utils.file;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-//import javax.servlet.http.HttpServletRequest;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 /**

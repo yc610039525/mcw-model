@@ -60,13 +60,27 @@ public class MD5Encrypt {
 		}
 		return resultString;
 	}
+	
+	/**
+	 * 返回十六进制字符串
+	 * 
+	 * @param arr
+	 * @return
+	 */
+	public static String hex(byte[] arr) {
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < arr.length; ++i) {
+			sb.append(Integer.toHexString((arr[i] & 0xFF) | 0x100).substring(1, 3));
+		}
+		return sb.toString();
+	}
 
 	/**
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// MD5Encrypt md5encrypt = new MD5Encrypt();
 		System.out.println(MD5Encode("123456"));
+		System.out.println(hex("123456".getBytes()));
 	}
 }
