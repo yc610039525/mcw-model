@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.lang.IllegalClassException;
-
 public class SqlHelper {
 	public static final String UN_EQUAL = " AND 1 = 2";
 
@@ -51,7 +48,7 @@ public class SqlHelper {
 			} else if (value instanceof String) {
 				contionValue = condition.replace("#", "").replace(contionValue, "'" + (String) value + "'");
 			} else {
-				throw new IllegalClassException("未知参数类型");
+				throw new IllegalArgumentException("未知参数类型");
 			}
 			return contionValue;
 		} else {
